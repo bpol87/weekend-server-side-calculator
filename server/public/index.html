@@ -1,31 +1,73 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Server-Side Calculator</title>    
-    <script defer src="scripts/axios.js"></script>
-    <script defer src="scripts/client.js" charset="utf-8"></script>
-  </head>
-  <body>
-    <h1>Server-Side Calculator</h1>
 
-    <form data-testid="calculator">
-      <input data-testid="numOne" placeholder="First Number">
-      <button>+</button>
-      <button>-</button>
-      <button>*</button>
-      <button>/</button>
-      <input data-testid="numTwo" placeholder="Second Number">
-      <button>=</button>
-      <button>C</button>
+<head>
+  <meta charset="utf-8">
+  <title>Server-Side Calculator</title>
+  <script defer src="scripts/axios.js"></script>
+  <script defer src="scripts/client.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Server-Side Calculator</h1>
+  <main id="calculator-interface">
+    <h4>Enter First Number then click an expression, then enter Second Number and click "Equals". <br /> C clears the
+      calculator. </h4>
+    <form data-testid="calculator" id="calculator-form">
+      <section id="calculators">
+        <input data-testid="numOne" id="numberOne" placeholder="First Number" type="number">
+        <section>
+          <button onclick="addExpression(event, '+')">+</button>
+          <button onclick="addExpression(event, '-')">-</button>
+          <button onclick="addExpression(event, '*')">*</button>
+          <button onclick="addExpression(event, '/')">/</button>
+        </section>
+      </section>
+      <section id="final-buttons">
+        <input data-testid="numTwo" id="numberTwo" placeholder="Second Number" type="number">
+        <section>
+          <button onclick="calculateExpression(event)">=</button>
+        </section>
+      </section>
+      <button onclick="resetCalculator(event)">C</button>
     </form>
-
-    <section data-testid="recentResult">
-      <!-- The most recent calculation result goes here. -->
+    <p id="viewer-window"></p>
+    <section id="results-tables">
+      <h2> Calculation</h2>
+      <section data-testid="recentResult" id="recent-result">
+        <!-- The most recent calculation result goes here. -->
+      </section>
     </section>
-
-    <section data-testid="resultHistory">
-      <!-- The list of calculation results goes here. -->
+  </main>
+  <section id="results-tables">
+    <h2>Results History</h2>
+    <section data-testid="resultHistory" id="result-history">
+        <!-- The list of calculation results goes here. -->
     </section>
-  </body>
+  </section>
+
+  <!-- <section id="standard-calculator">
+<section id="buttons1">
+  <button>7</button>
+  <button>8</button>
+  <button>9</button>
+  <button class="math-element">+</button>
+</section>
+<section id="buttons1">
+  <button>4</button>
+  <button>5</button>
+  <button>6</button>
+  <button class="math-element">-</button>
+</section>
+<section id="buttons1">
+  <button>1</button>
+  <button>2</button>
+  <button>3</button>
+  <button class="math-element">*</button>
+</section> -->
+
+  </section>
+</body>
+
 </html>

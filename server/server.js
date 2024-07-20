@@ -1,21 +1,46 @@
 const express = require('express');
 const app = express();
-let PORT = process.env.PORT || 5000;
+let PORT = process.env.PORT || 5001;
 
 app.use(express.json());
 app.use(express.static('server/public'));
 
 // Global variable that will contain all of the
 // calculation objects:
-let calculations = []
+let calculations = [];
 
 
 // Here's a wonderful place to make some routes:
 
 // GET /calculations
+app.get('/calculations', (req, res) => {
+  console.log('GET /calculate received a request!');
+  res.send(calculations);
+})
 
 // POST /calculations
+app.post('/calculations', (req, res) => {
+  console.log('\treq.body is:', req.body);
+  
+  calcExp(req.body);
+  console.log('\tnew req.body is:', req.body);
+  calculations.push(req.body);
+console.log('\tnew calculations are:', calculations);
 
+  res.sendStatus(201);
+})
+
+function calcExp(req) {
+  if (req.operator === '+') {
+  req.result = req.numOne + req.numTwo;
+} else if (req.operator === '-') {
+  req.result = req.numOne - req.numTwo;
+} else if (req.operator === '*') {
+  req.result = Math.round((req.numOne * req.numTwo) * 100)/100;
+} else if (req.operator === '/') {
+  req.result = Math.round((req.numOne / req.numTwo) * 100)/100;
+}
+}
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
