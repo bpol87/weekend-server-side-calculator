@@ -54,17 +54,49 @@ button {
     padding: 0px;
 }
 
-.math-element {
-    margin-left: 50px;
-    width: 80px;
-}
-
 .result {
     font-size: 24pt;
-    color:blueviolet;
+    color: blueviolet;
     margin: 0px;
 }
 
 .history {
     font-size: 16pt;
+}
+
+/* STANDARD CALCULATOR STYLING */
+
+#std-calc-viewer {
+    border: 1px solid lightgray;
+    height: 40px;
+    width: 75%;
+    margin: 5px 3px;
+    padding: 5px;
+}
+
+#calc-viewer {
+    font-size: 20pt;
+    text-align: end;
+    line-height: 0;
+    vertical-align: middle;
+}
+
+#viewer-clear {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    vertical-align: middle;
+}
+
+#clear-btn {
+    height: 50px;
+    background-color: orangered;
+    color: white;
+    border: 1px solid white;
+}
+
+#clear-btn:active {
+    background-color: lightsalmon;
+    color: darkslategrey;
+    border: 1px solid darkslategray;
 }

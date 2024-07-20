@@ -43,29 +43,45 @@
   <section id="results-tables">
     <h2>Results History</h2>
     <section data-testid="resultHistory" id="result-history">
-        <!-- The list of calculation results goes here. -->
+      <!-- The list of calculation results goes here. -->
     </section>
   </section>
 
-  <!-- <section id="standard-calculator">
-<section id="buttons1">
-  <button>7</button>
-  <button>8</button>
-  <button>9</button>
-  <button class="math-element">+</button>
-</section>
-<section id="buttons1">
-  <button>4</button>
-  <button>5</button>
-  <button>6</button>
-  <button class="math-element">-</button>
-</section>
-<section id="buttons1">
-  <button>1</button>
-  <button>2</button>
-  <button>3</button>
-  <button class="math-element">*</button>
-</section> -->
+  <section id="standard-calculator">
+    <section id="viewer-clear">
+      <div id="std-calc-viewer">
+        <p id="calc-viewer"></p>
+      </div>
+      <button id="clear-btn" onclick="clearViewer(event)">C</button>
+    </section>
+    <section id="buttons1">
+      <button id="seven" onclick="addNumber(event, 7)">7</button>
+      <button id="eight" onclick="addNumber(event, 8)">8</button>
+      <button id="nine" onclick="addNumber(event, 9)">9</button>
+      <button id="plus" onclick="operator(event, '+')">+</button>
+    </section>
+    <section id="buttons2">
+      <button id="four" onclick="addNumber(event, 4)">4</button>
+      <button id="five" onclick="addNumber(event, 5)">5</button>
+      <button id="six" onclick="addNumber(event, 6)">6</button>
+      <button id="minus" onclick="operator(event, '-')">-</button>
+    </section>
+    <section id="buttons3">
+      <button id="one" onclick="addNumber(event, 1)">1</button>
+      <button id="two" onclick="addNumber(event, 2)">2</button>
+      <button id="three" onclick="addNumber(event, 3)">3</button>
+      <button id="multiply" onclick="operator(event, '*')">*</button>
+    </section>
+    <section id="buttons4">
+      <button id="zero" onclick="addNumber(event, 0)">0</button>
+      <button id="decimal" onclick="addNumber(event, '.')">.</button>
+      <button id="equals" onclick="calculateTotal(event)">=</button>
+      <button id="divide" onclick="operator(event, '/')">/</button>
+    </section>
+  </section>
+
+  <h2>Standard Calculator History</h2>
+  <section id="std-calc-history">
 
   </section>
 </body>

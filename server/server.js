@@ -8,6 +8,7 @@ app.use(express.static('server/public'));
 // Global variable that will contain all of the
 // calculation objects:
 let calculations = [];
+let stdCalculations = [];
 
 
 // Here's a wonderful place to make some routes:
@@ -41,6 +42,35 @@ function calcExp(req) {
   req.result = Math.round((req.numOne / req.numTwo) * 100)/100;
 }
 }
+// STANDARD CALCULATOR FUNCTIONS
+function stdCalcExp(req){
+  if (req.operator === '+') {
+    req.result = req.numOne + req.numTwo;
+  } else if (req.operator === '-') {
+    req.result = req.numOne - req.numTwo;
+  } else if (req.operator === '*') {
+    req.result = Math.round((req.numOne * req.numTwo) * 10000000)/10000000;
+  } else if (req.operator === '/') {
+    req.result = Math.round((req.numOne / req.numTwo) * 10000000)/10000000;
+  }
+}
+//STANDARD CALCULATOR GET AND POST CALLS
+app.get('/calculate', (req, res) => {
+  console.log('GET /calculate received a request!');
+  res.send(stdCalculations);
+})
+
+app.post('/calculate', (req, res) => {
+  console.log('\treq.body is:', req.body);
+  
+  stdCalcExp(req.body);
+  console.log('\tnew req.body is:', req.body);
+  stdCalculations.push(req.body);
+console.log('\tnew calculations are:', stdCalculations);
+
+  res.sendStatus(201);
+})
+
 
 // PLEASE DO NOT MODIFY ANY CODE BELOW THESE BEARS:
 // 🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸  🐻  🐻‍❄️  🧸
